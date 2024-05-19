@@ -1,0 +1,60 @@
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.csproj.AssemblyReference.cache
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.csproj.SuggestedBindingRedirects.cache
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.Properties.Resources.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.csproj.GenerateResource.cache
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.csproj.CoreCompileInputs.cache
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\5 postgres.exe.config
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\5 postgres.exe
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\5 postgres.pdb
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.exe
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.pdb
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\EntityFramework.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\EntityFramework.SqlServer.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Bcl.HashCode.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Npgsql.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Buffers.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Collections.Immutable.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Memory.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Numerics.Vectors.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Text.Encodings.Web.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Text.Json.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Threading.Channels.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Threading.Tasks.Extensions.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.ValueTuple.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\EntityFramework.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\EntityFramework.SqlServer.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Bcl.HashCode.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\Npgsql.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Buffers.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Collections.Immutable.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Memory.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Numerics.Vectors.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Text.Encodings.Web.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Text.Json.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Threading.Channels.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Threading.Tasks.Extensions.xml
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.ValueTuple.xml
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.csproj.CopyComplete
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Security.Cryptography.ProtectedData.dll
+H:\УДиИБ\5 postgres\5 postgres\bin\Debug\System.Security.Cryptography.ProtectedData.xml
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.AuthorizationForm.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.RegistrationForm.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.Tables.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.Banks.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.DirectoryAreas.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.DirectoryStreets.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.Renters.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.Halls.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.Contracts.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\_5_postgres.AdministratorForm.resources
+H:\УДиИБ\5 postgres\5 postgres\obj\Debug\5 postgres.csproj.ResolveComReference.cache
