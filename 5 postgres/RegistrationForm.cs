@@ -14,11 +14,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace _5_postgres
 {
     public partial class RegistrationForm : Form
     {
+        static public DateTime date= DateTime.Now;
         public RegistrationForm()
         {
             InitializeComponent();
@@ -34,23 +36,30 @@ namespace _5_postgres
             string hash = Encrypt(textBox2.Text);
             if (checkBox1.Checked == true)
             {
-                 query = "INSERT INTO  scheme.users (userlogin,userpassword,userrole,name,surname) VALUES ('" + textBox1.Text + "','" + hash + "','" + "admin" + "','" + textBox3.Text + "','" + textBox4.Text + "')";
+                 query = "INSERT INTO  scheme.users (userlogin,userpassword,userrole,name,surname,date_password) VALUES ('" + textBox1.Text + "','" + hash + "','" + "admin" + "','" + textBox3.Text + "','" + textBox4.Text + "','" + date+"')";
             }
             else
             {
-                 query = "INSERT INTO  scheme.users (userlogin,userpassword,userrole,name,surname) VALUES ('" + textBox1.Text + "','" + hash + "','" +"user"+"','"+ textBox3.Text + "','" + textBox4.Text + "')";
+                 query = "INSERT INTO  scheme.users (userlogin,userpassword,userrole,name,surname,date_password) VALUES ('" + textBox1.Text + "','" + hash + "','" +"user"+"','"+ textBox3.Text + "','" + textBox4.Text + "','"+date+"')";
             }
             OdbcConnection conn = new OdbcConnection("Dsn=PostgreSQL35W;server=localhost;port=5432;uid=postgres;password=postgres;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1");
             OdbcCommand comm = new OdbcCommand(query, conn);
-            conn.Open();
-            string file = @"log.txt";
-            using (StreamWriter sw = new StreamWriter(file, true))
+            if (textBox2.Text.Length <= 7)
             {
-                sw.WriteLine($" Новый пользователь  зарегистрировался под  логином {textBox1.Text} в {DateTime.Now}\n");
+                MessageBox.Show("Введите пароль длины 8 и более символов");
             }
-            comm.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("OK");
+            else
+            {
+                conn.Open();
+                string file = @"log.txt";
+                using (StreamWriter sw = new StreamWriter(file, true))
+                {
+                    sw.WriteLine($" Новый пользователь  зарегистрировался под  логином {textBox1.Text} в {DateTime.Now}\n");
+                }
+                comm.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("OK");
+            }
         }
         static string Encrypt(string passwd)
         {
@@ -66,6 +75,33 @@ namespace _5_postgres
                     byte[] result = cryptoTransform.TransformFinalBlock(data, 0, data.Length);
                     return Convert.ToBase64String(result);
                 }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string query;
+            string hash = Encrypt(textBox2.Text);
+                 query = "UPDATE scheme.users SET userpassword=('" + Encrypt(textBox2.Text) + "')" +
+                     ",date_password=('" + DateTime.Now + "')" +
+                     "WHERE userlogin = ('" + textBox1.Text + "')";            
+            OdbcConnection conn = new OdbcConnection("Dsn=PostgreSQL35W;server=localhost;port=5432;uid=postgres;password=postgres;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1");
+            OdbcCommand comm = new OdbcCommand(query, conn);
+            if (textBox2.Text.Length <= 7)
+            {
+                MessageBox.Show("Введите пароль длины 8 и более символов");
+            }
+            else
+            {
+                conn.Open();
+                string file = @"log.txt";
+                using (StreamWriter sw = new StreamWriter(file, true))
+                {
+                    sw.WriteLine($" Пользователь   под  логином {textBox1.Text} обновил пароль в {DateTime.Now}\n");
+                }
+                comm.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("OK");
             }
         }
         //static string Decrypt(string passwd)

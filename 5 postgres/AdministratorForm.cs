@@ -15,11 +15,14 @@ namespace _5_postgres
     public partial class AdministratorForm : Form
     {
         private readonly Users user;
+        public static DateTime date;
+        static public DateTimePicker dtm;
         public AdministratorForm(Users user)
         {
             InitializeComponent();
             this.user = user;
             GetData();
+           // date = dtmDatePassword.Value ;
         }
         OdbcConnection connection = new OdbcConnection("Dsn=PostgreSQL35W;server=localhost;port=5432;uid=postgres;password=postgres;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1");
         OdbcCommand command;
@@ -37,6 +40,8 @@ namespace _5_postgres
 
         private void AdministratorForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataU.users". При необходимости она может быть перемещена или удалена.
+            //this.usersTableAdapter1.Fill(this.dataU.users);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "dataUsers.users". При необходимости она может быть перемещена или удалена.
             //this.usersTableAdapter.Fill(this.dataUsers.users);
             labelRole.Text = $"Логин:{user.Login} роль:{user.Role}";
@@ -59,20 +64,27 @@ namespace _5_postgres
             string hash = Encrypt(txtUserPassword.Text);
             if (txtUserRole.Text == "user" || txtUserRole.Text == "admin")
             {
-                string query = "INSERT INTO  scheme.users (userlogin,userpassword,userrole,name,surname) VALUES('" + txtUserLogin.Text
+                string query = "INSERT INTO  scheme.users (userlogin,userpassword,userrole,name,surname,date_password) VALUES('" + txtUserLogin.Text
          + "', '" + hash + "', '" + txtUserRole.Text + "', '"
-         + txtName.Text + "','" + txtSurname.Text + "')";
-                command = new OdbcCommand(query, connection);
-                if (txtUserLogin.Text == dataGridView1.CurrentRow.Cells[1].Value.ToString())
-                    MessageBox.Show("Такой пользователь уже добавлен в БД");
+         + txtName.Text + "','" + txtSurname.Text + "','" + dtmDatePassword.Value + "')";
+                if (txtUserPassword.Text.Length <= 7)
+                {
+                    MessageBox.Show("Введите пароль длины 8 и более символов");
+                }
                 else
                 {
-                    if (connection.State == ConnectionState.Closed)
-                        connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                    GetData();
-                    MessageBox.Show("Пользователь добавлен.");
+                    command = new OdbcCommand(query, connection);
+                    if (txtUserLogin.Text == dataGridView1.CurrentRow.Cells[1].Value.ToString())
+                        MessageBox.Show("Такой пользователь уже добавлен в БД");
+                    else
+                    {
+                        if (connection.State == ConnectionState.Closed)
+                            connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                        GetData();
+                        MessageBox.Show("Пользователь добавлен.");
+                    }
                 }
             }
             else
@@ -85,15 +97,22 @@ namespace _5_postgres
         {
             if (txtUserRole.Text == "user" || txtUserRole.Text == "admin")
             {
-                string query = "UPDATE scheme.users SET userlogin=('" + txtUserLogin.Text + "'),userpassword=('" + txtUserPassword.Text + "')" +
-         ",userrole=('" + txtUserRole.Text + "'),name=('" + txtName.Text + "'),surname=('" + txtSurname.Text + "')  " +
+                string query = "UPDATE scheme.users SET userlogin=('" + txtUserLogin.Text + "'),userpassword=('" + Encrypt(txtUserPassword.Text) + "')" +
+         ",userrole=('" + txtUserRole.Text + "'),name=('" + txtName.Text + "'),surname=('" + txtSurname.Text + "'),date_password=('" + DateTime.Now+ "')" +
          "WHERE userid = ('" + txtIDUser.Text + "')";
-                command = new OdbcCommand(query, connection);
-                if (connection.State == ConnectionState.Closed)
-                    connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-                GetData();
+                if (txtUserPassword.Text.Length <= 7)
+                {
+                    MessageBox.Show("Введите пароль длины 8 и более символов");
+                }
+                else
+                {
+                    command = new OdbcCommand(query, connection);
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                    GetData();
+                }
             }
             else
             {
@@ -129,17 +148,6 @@ namespace _5_postgres
                 connection.Close();
             }
         }
-
-        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            txtIDUser.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            txtUserLogin.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            txtUserPassword.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            txtUserRole.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            txtName.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            txtSurname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-        }
-
         private void BtnAdd_MouseEnter(object sender, EventArgs e)
         {
             txtIDUser.Enabled = false;
@@ -192,6 +200,22 @@ namespace _5_postgres
                     byte[] result = cryptoTransform.TransformFinalBlock(data, 0, data.Length);
                     return Convert.ToBase64String(result);
                 }
+            }
+        }
+
+        private void dataGridView1_CellEnter_1(object sender, DataGridViewCellEventArgs e)
+        {
+            txtIDUser.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            txtUserLogin.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            txtUserPassword.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            txtUserRole.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            txtName.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            txtSurname.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+            dtmDatePassword.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            date = dtmDatePassword.Value ;
+            if (DateTime.Now.Day-dtmDatePassword.Value.Day>=7)
+            {
+                MessageBox.Show($"Необходимо сменить пароль для аккаунта {txtUserLogin.Text}");
             }
         }
     }

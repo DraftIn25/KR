@@ -27,11 +27,14 @@ namespace _5_postgres
         {
             InitializeComponent();
         }
-
         private void Form2_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataU.users". При необходимости она может быть перемещена или удалена.
+          //  this.usersTableAdapter1.Fill(this.dataU.users);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataUsers.users". При необходимости она может быть перемещена или удалена.
+          //  this.usersTableAdapter.Fill(this.dataUsers.users);
             passwdBox.PasswordChar = '*';
-        }
+    }
         private void button1_Click(object sender, EventArgs e)
         {
             string hash=Encrypt(passwdBox.Text);
@@ -39,18 +42,28 @@ namespace _5_postgres
             OdbcDataAdapter adapter = new OdbcDataAdapter("select * from scheme.users where userlogin='" + loginBox.Text + "' and userpassword='" + hash + "'", conn);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
-            if (dataTable.Rows.Count == 1)
-            {
-                var user=new Users(dataTable.Rows[0].ItemArray[1].ToString(), dataTable.Rows[0].ItemArray[3].ToString());
-                Tables fm = new Tables(user);
-                fm.ShowDialog();
-                loginBox.Text = null;
-                passwdBox.Text = null;
-            }
-            else
-            {
-                MessageBox.Show("Неправильно ввели логин или пароль. Попробуйте снова!");
-            }
+            //if (DateTime.Now.Day - AdministratorForm.date.Day >= 7)
+            //{
+            //    MessageBox.Show("Время действия пароля вышло необходимо его сменить. Введите свои данные и новый пароль");
+            //    RegistrationForm registrationForm=new RegistrationForm();
+            //    registrationForm.ShowDialog();
+                
+            //}
+            //else
+            //{
+                if (dataTable.Rows.Count == 1)
+                {
+                    var user = new Users(dataTable.Rows[0].ItemArray[1].ToString(), dataTable.Rows[0].ItemArray[3].ToString());
+                    Tables fm = new Tables(user);
+                    fm.ShowDialog();
+                    loginBox.Text = null;
+                    passwdBox.Text = null;
+                }
+                else
+                {
+                    MessageBox.Show("Неправильно ввели логин или пароль. Попробуйте снова!");
+                }
+            //}
         }
         static string Encrypt(string passwd)
         {

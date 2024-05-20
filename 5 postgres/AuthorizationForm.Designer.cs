@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizationForm));
             this.AuthentificationButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +41,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.dataU = new _5_postgres.DataU();
+            this.dataUBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataUsers = new _5_postgres.DataUsers();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter = new _5_postgres.DataUsersTableAdapters.usersTableAdapter();
+            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter1 = new _5_postgres.DataUTableAdapters.usersTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dataU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataUBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // AuthentificationButton
@@ -83,6 +96,7 @@
             // 
             // passwdBox
             // 
+            this.passwdBox.BackColor = System.Drawing.SystemColors.Window;
             this.passwdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwdBox.Location = new System.Drawing.Point(237, 175);
             this.passwdBox.Name = "passwdBox";
@@ -104,7 +118,7 @@
             // RegistrationButton
             // 
             this.RegistrationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RegistrationButton.Location = new System.Drawing.Point(595, 226);
+            this.RegistrationButton.Location = new System.Drawing.Point(562, 211);
             this.RegistrationButton.Name = "RegistrationButton";
             this.RegistrationButton.Size = new System.Drawing.Size(145, 40);
             this.RegistrationButton.TabIndex = 13;
@@ -156,6 +170,39 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // dataU
+            // 
+            this.dataU.DataSetName = "DataU";
+            this.dataU.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataUBindingSource
+            // 
+            this.dataUBindingSource.DataSource = this.dataU;
+            this.dataUBindingSource.Position = 0;
+            // 
+            // dataUsers
+            // 
+            this.dataUsers.DataSetName = "DataUsers";
+            this.dataUsers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.dataUsers;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // usersBindingSource1
+            // 
+            this.usersBindingSource1.DataMember = "users";
+            this.usersBindingSource1.DataSource = this.dataU;
+            // 
+            // usersTableAdapter1
+            // 
+            this.usersTableAdapter1.ClearBeforeFill = true;
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +222,11 @@
             this.Name = "AuthorizationForm";
             this.Text = "AuthorizatrionForm";
             this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataUBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +245,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.BindingSource dataUBindingSource;
+        private DataU dataU;
+        private DataUsers dataUsers;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private DataUsersTableAdapters.usersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.BindingSource usersBindingSource1;
+        private DataUTableAdapters.usersTableAdapter usersTableAdapter1;
     }
 }

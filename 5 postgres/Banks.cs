@@ -199,5 +199,10 @@ namespace _5_postgres
                 word.SaveWordOne(dataGridView1, $"banks{txtIDBank.Text}.docx");
             else MessageBox.Show("Не выбрана строка");
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
