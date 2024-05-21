@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Interop.Word;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,8 +24,8 @@ namespace _5_postgres
             this.user = user;
             GetData();
         }
-        OdbcConnection connection = new OdbcConnection("Dsn=PostgreSQL35W;server=localhost;port=5432;uid=postgres;password=postgres;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1");
-        OdbcCommand command;
+         OdbcConnection connection = new OdbcConnection("Dsn=PostgreSQL35W;server=localhost;port=5432;uid=postgres;password=postgres;sslmode=disable;readonly=0;protocol=7.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;unknownsizes=0;maxvarcharsize=255;maxlongvarcharsize=8190;debug=0;commlog=0;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;lfconversion=1;updatablecursors=1;trueisminus1=0;bi=0;byteaaslongvarbinary=1;useserversideprepare=1;lowercaseidentifier=0;d6=-101;optionalerrors=0;fetchrefcursors=0;xaopt=1");
+         OdbcCommand command;
         OdbcDataAdapter adapter;
 
         private void IsAdmin()
@@ -45,7 +46,7 @@ namespace _5_postgres
             IsAdmin();
             //txtIDBank.Enabled= false;
         }
-        void GetData()
+        public  System.Data.DataTable GetData()
         {
             string query = "select * from scheme.bank";
             adapter = new OdbcDataAdapter(query, connection);
@@ -54,8 +55,8 @@ namespace _5_postgres
             adapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
             connection.Close();
+            return dataTable;
         }
-
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             //string query = "INSERT INTO  scheme.bank (/*bankid,*/bankname) VALUES ('" /*+ txtIDBank.Text + "','"*/ + txtBankName.Text + "')";

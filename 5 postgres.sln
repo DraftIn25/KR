@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5 postgres", "5 postgres\5 postgres.csproj", "{4E7324F3-525F-41D9-A5C5-1483D279C08E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest1", "UnitTest1\UnitTest1.csproj", "{35FE5124-EC2F-4216-84E6-BE93ABA86E7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4E7324F3-525F-41D9-A5C5-1483D279C08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E7324F3-525F-41D9-A5C5-1483D279C08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E7324F3-525F-41D9-A5C5-1483D279C08E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35FE5124-EC2F-4216-84E6-BE93ABA86E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35FE5124-EC2F-4216-84E6-BE93ABA86E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35FE5124-EC2F-4216-84E6-BE93ABA86E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35FE5124-EC2F-4216-84E6-BE93ABA86E7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
